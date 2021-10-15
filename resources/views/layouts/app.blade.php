@@ -8,6 +8,7 @@
   <meta name="author" content="" />
 
   <title>@yield('title')</title>
+  
     <!-- style -->
     
     @stack('prepend-style')

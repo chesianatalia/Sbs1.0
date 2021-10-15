@@ -1,7 +1,90 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
+    <div class="page-auth">
+      <div class="container">
+        <div class="text-center">
+          <h1 class="mb-0 title"><u>Step by Step</u></h1>
+          <p class="mb-5">
+            No one is born a great cook, one learns by doing -Julia Child
+          </p>
+        </div>
+      </div>
+      <div class="section-store-auth">
+        <div class="container">
+          <div class="row row-login">
+            <div class="col-lg-6 text-center">
+              <img
+                src="Images/signup_pict.png"
+                alt=""
+                class="w-100 mb-4 mb-lg-none"
+              />
+            </div>
+            <div class="col-lg-4">
+              <h2 class="text-center"><u>Sign Up Here!</u></h2>
+              <form action="" class="mt-3">
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <input
+                      type="FirstName"
+                      placeholder="First Name"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <input
+                      type="lastname"
+                      placeholder="Last Name"
+                      class="form-control"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input
+                    type="Username"
+                    placeholder="Username"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="Email"
+                    placeholder="Email Address"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="Password"
+                    placeholder="Password"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="date"
+                    placeholder="Birth Date"
+                    class="form-control"
+
+                  />
+                <a
+                  href="login.html"
+                  class="btn btn_warna btn-block mt-4"
+                >
+                  Sign Up
+                </a>
+              </form>
+              <p class="text-center">already have account? Log in <a href="{{ route('login') }}">here!</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<div class="container" style="display: none">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

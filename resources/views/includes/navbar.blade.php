@@ -23,7 +23,7 @@
             <a href="{{ route('favorite') }}" class="nav-link">Favorite</a>
           </li>
           <li class="nav-item">
-            <a href="login.html" class="nav-link">Log Out</a>
+            <a href="{{ route('login') }}"class="nav-link">Log Out</a>
           </li>
         </ul>
       </div>

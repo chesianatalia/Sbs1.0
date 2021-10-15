@@ -1,7 +1,53 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
+  <div>
+    <div class="container">
+      <div class="text-center">
+        <h1 class="mb-0 title"><u>Step by Step</u></h1>
+        <p class="mb-5">
+          No one is born a great cook, one learns by doing -Julia Child
+        </p>
+      </div>
+    </div>
+    <div class="section-store-auth">
+      <div class="container">
+        <div
+          class="row row-login d-flex justify-content-center align-items-center"
+        >
+          <div class="col-lg-4 col-md-6">
+            <h2 class="text-center"><u>Log in Here!</u></h2>
+            <form action="" class="mt-3">
+              <div class="form-group">
+                <input
+                  type="Username"
+                  placeholder="Username"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="Password"
+                  placeholder="Password"
+                  class="form-control"
+                />
+              </div>
+              <a href="dashboard.html" class="btn btn_warna btn-block mt-4">
+                Log in
+              </a>
+            </form>
+            <p class="text-center">
+              doesn't have account? Sign Up<a href="{{ route('register') }}"> here!</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="container" style="display: none">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -70,4 +116,15 @@
         </div>
     </div>
 </div>
+
+@push('addon-style')
+    <style>
+      body {
+        background-image: url("Images/login_bg.png");
+        background-size: cover;
+      }
+    </style>
+
+    
+@endpush
 @endsection

@@ -42,18 +42,6 @@
             <input type="date" placeholder="Birth Date" class="form-control" />
             <label for="">Gender</label>
             <div class="form-row justify-content-between">
-              <div class="form-group col-md-3 background_gender d-flex justify-content-center align-items-center">
-                <input type="radio" name="Gender" />
-                <label for="Male" class="m-0 p-0 ml-1">Male</label>
-              </div>
-              <div class="form-group col-md-3 background_gender d-flex justify-content-center align-items-center">
-                <input type="radio" name="Gender" />
-                <label for="Female" class="m-0 p-0 ml-1">Female</label>
-              </div>
-              <div class="form-group col-md-3 background_gender d-flex justify-content-center align-items-center">
-                <input type="radio" name="Gender" />
-                <label for="Other" class="m-0 p-0 ml-1">Other</label>
-              </div>
               <div class="form-group">
                 <input id="image" type="file" name="profile_photo" placeholder="Profile Picture" class="form-control"
                   required="" capture>

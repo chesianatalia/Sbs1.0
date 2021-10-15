@@ -45,7 +45,7 @@
             <div class="row d-flex justify-content-center align-items-center">
             <div class="col-6 col-md-3 col-lg-2">
                 <!--dataaosdisiniya-->
-                <a href="food-category.html" class="component-categories d-block">
+                <a href="{{ route('foodcat') }}" class="component-categories d-block">
                 <div class="categories-image">
                     <img src="Images/Food-category.svg" alt="" class="w-100">
                 </div>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2">
                 <!--dataaosdisiniya-->
-                <a href="drink-categories.html" class="component-categories d-block">
+                <a href="{{ route('drinkcat') }}" class="component-categories d-block">
                 <div class="categories-image">
                     <img src="Images/drink-categories.svg" alt="" class="w-100">
                 </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2">
                 <!--dataaosdisiniya-->
-                <a href="snack-category.html" class="component-categories d-block">
+                <a href="{{ route('snackcat') }}" class="component-categories d-block">
                 <div class="categories-image">
                     <img src="Images/snack-categories.svg" alt="" class="w-100">
                 </div>
@@ -72,7 +72,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2">
                 <!--dataaosdisiniya-->
-                <a href="dessert-category.html" class="component-categories d-block">
+                <a href="{{ route('dessertcat') }}" class="component-categories d-block">
                 <div class="categories-image">
                     <img src="Images/dessert-categories.svg" alt="" class="w-100">
                 </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2">
                 <!--dataaosdisiniya-->
-                <a href="other-category.html" class="component-categories d-block">
+                <a href="{{ route('othercat') }}" class="component-categories d-block">
                 <div class="categories-image">
                     <img src="Images/other-categories.svg" alt="" class="w-100">
                 </div>
@@ -131,12 +131,12 @@
                 <div class="col-12">
                 <div class="container likecomment">
                     <img src="Images/like.svg" alt="" class="ml-3 mt-2">
-                <a href="read-more.html"> 
+                <a href="{{ route('detail') }}"> 
                     <img src="Images/comment.svg"alt="" class="ml-3 mt-2">
                 </a>
                 </div>
                 <div class="col-lg-2 col-sm-4 button-readmore">
-                    <a href="read-more.html" class="btn btn_warna btn-block mt-0 btn-sm rounded-pill">
+                    <a href="{{ route('detail') }}" class="btn btn_warna btn-block mt-0 btn-sm rounded-pill">
                         Read More
                     </a>
                 </div>

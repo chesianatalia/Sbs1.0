@@ -10,10 +10,10 @@
   <title>@yield('title')</title>
   @stack('prepend-style')
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="style/main.css" rel="stylesheet" />
-  <link rel="stylesheet" href="Style/Components/categories.css">
+  <link href="{{ url("vendor/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" />
+  {{-- <link rel="stylesheet" href="{{ url("Style/Components/categories.css") }}"> --}}
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css"/>
+  <link href="{{ url("style/main.css") }}" rel="stylesheet" />
   @stack('addon-style')
 </head>
 
@@ -24,7 +24,7 @@
     <div class=" container">
       <div class="nav-bar-text-decoration">
         <a href="#" class="categories-text">
-          <img src="Images/admin1.png" alt="logo" />
+          <img src="{{ url("Images/admin1.png") }}" alt="logo" />
           Hello, Admin!
         </a>
       </div>
@@ -36,11 +36,18 @@
           <li class="nav-item">
             <a href="{{ route('admin-dashboard') }}" class="nav-link">Home</a>
           </li>
+           <li class="nav-item">
+            <a href="{{ route('post.index') }}" class="nav-link">Post</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('category.index') }}" class="nav-link {{ request()->is('admin/category*') ? 'active' : ''}}">Categories</a>
+          </li>
+          <li class="nav-item">
           <li class="nav-item">
             <a href="#" class="nav-link">Interaction</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">Users</a>
+            <a href="{{ route('user.index') }}" class="nav-link">Users</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">Log Out</a>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::get('/othercat', [App\Http\Controllers\OthercatController::class, 'index'
 //->middleware(['auth','admin'])
 Route::prefix('admin')->namespace('Admin')->group(function(){
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
+    Route::resource('category', 'CategoryController');
+    Route::resource('user', 'UserController');
+    Route::resource('post','PostController');
 });
 Auth::routes();
 

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('title')
     POST
@@ -10,7 +10,7 @@
             <div class="text-center">
                 <h1 class="mb-0 title"><u>Step by Step</u></h1>
                 <h4 class="mb-3">
-                    ADMIN<br>Create New Post
+                    ADMIN<br>Edit Post
                 </h4>
             </div>
         </div>
@@ -27,13 +27,15 @@
                         </div>
                     @endif
                     <div class="card kartu">
-                        <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('post.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                            @method('PUT')
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Post Title</label>
-                                        <input type="text" name="title" class="form-control" required>
+                                        <input type="text" name="title" class="form-control" value="{{ $item->title }}"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -45,7 +47,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea name="description" id="editor1"></textarea>
+                                        <textarea name="description" id="editor">{!! $item->description !!}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -53,7 +55,13 @@
                                         <label>User</label>
                                         <select name="user_id" class="form-control">
                                             @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->username }}</option>
+                                                @if ($item->user_id)
+                                                    <option value="{{ $item->user_id }}" selected>
+                                                        {{ $item->user->username }}</option>
+                                                @else
+                                                    <option value="{{ $user->id }}">{{ $user->username }}</option>
+
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -63,21 +71,15 @@
                                         <label>Category</label>
                                         <select name="categories_id" class="form-control">
                                             @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @if ($item->category_id)
+                                                    <option value="{{ $item->category_id }}" selected>
+                                                        {{ $item->category->name }}</option>
+                                                @else
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+
+                                                @endif
                                             @endforeach
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Materials</label>
-                                        <textarea name="material" id="editor"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Step By Steps</label>
-                                        <textarea name="stepbystep" id="editor2"></textarea>
                                     </div>
                                 </div>
                                 {{-- <div class="col-md-12">
@@ -139,16 +141,14 @@
 
 @endsection
 
-
-
 @push('addon-script')
     <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('editor1');
         CKEDITOR.replace('editor');
-        CKEDITOR.replace('editor2');
     </script>
 @endpush
+
+
 {{-- @push('addon-script')
 <script>
 $(document).ready( function () {

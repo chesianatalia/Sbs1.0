@@ -5,19 +5,19 @@
 @endsection
 
 @section('content')
-       <div class="page-content dashboard">
-    <div class="container">
-      <div class="text-center">
-        <h1 class="mb-0 title"><u>Step by Step</u></h1>
-        <h4 class="mb-3">
-          ADMIN<br>Edit Post
-        </h4>
-      </div>
-    </div>
-    <div class="dashboard-content">
-        <div class="row">
-            <div class="col-md-12">
-                @if($errors->any())
+    <div class="page-content dashboard">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="mb-0 title"><u>Step by Step</u></h1>
+                <h4 class="mb-3">
+                    ADMIN<br>Edit Post
+                </h4>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="row">
+                <div class="col-md-12">
+                    @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
                                 @foreach ($errors->all() as $error)
@@ -26,60 +26,75 @@
                             </ul>
                         </div>
                     @endif
-                <div class="card kartu">
-                    <form action="{{ route('post.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                        @method('PUT')
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Post Title</label>
-                                    <input type="text" name="title" class="form-control" value="{{$item->title}}" required>
+                    <div class="card kartu">
+                        <form action="{{ route('post.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Post Title</label>
+                                        <input type="text" name="title" class="form-control" value="{{ $item->title }}"
+                                            required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Final Photo</label>
-                                    <input type="file" name="photo" class="form-control" required>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Final Photo</label>
+                                        <input type="file" name="photo" class="form-control" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <textarea name="description" id="editor">{!! $item->description !!}</textarea>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea name="description" id="editor">{!! $item->description !!}</textarea>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>User</label>
-                                    <select name="user_id" class="form-control">
-                                        @foreach ($users as $user)
-                                            @if ($item->user_id) 
-                                                <option value="{{$item->user_id}}" selected>{{ $item->user->username}}</option>
-                                            @else 
-                                                <option value="{{ $user->id }}">{{ $user->username }}</option> 
-                                            
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>User</label>
+                                        <select name="user_id" class="form-control">
+                                            @foreach ($users as $user)
+                                                @if ($item->user_id)
+                                                    <option value="{{ $item->user_id }}" selected>
+                                                        {{ $item->user->username }}</option>
+                                                @else
+                                                    <option value="{{ $user->id }}">{{ $user->username }}</option>
+
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Category</label>
-                                    <select name="categories_id" class="form-control">
-                                        @foreach ($categories as $category)
-                                            @if ($item->category_id) 
-                                                <option value="{{$item->category_id}}" selected>{{ $item->category->name}}</option>
-                                            @else 
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option> 
-                                            
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <select name="categories_id" class="form-control">
+                                            @foreach ($categories as $category)
+                                                @if ($item->category_id)
+                                                    <option value="{{ $item->category_id }}" selected>
+                                                        {{ $item->category->name }}</option>
+                                                @else
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            {{-- <div class="col-md-12">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Materials</label>
+                                        <textarea name="material" id="editor"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Step By Steps</label>
+                                        <textarea name="stepbystep" id="editor"></textarea>
+                                    </div>
+                                </div>
+                                {{-- <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Material</label>
                                     <select name="materials_id" class="form-control">
@@ -119,30 +134,30 @@
                                     </select>
                                 </div>
                             </div> --}}
-                        
-                        </div>
-                        <div class="row">
-                            <div class="col text-right">
-                                <button type="submit" class="btn btn-success px-5">Save Now</button>
-                            </div>
-                        </div>
 
-                    </form>
+                            </div>
+                            <div class="row">
+                                <div class="col text-right">
+                                    <button type="submit" class="btn btn-success px-5">Save Now</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     </div>
-  </div>
 
-    
+
 @endsection
 
 @push('addon-script')
-<script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('editor');
-</script>
+    <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
 @endpush
 
 
@@ -176,5 +191,5 @@ $(document).ready( function () {
         ]
     })
   </script> --}}
-    
+
 {{-- @endpush --}}

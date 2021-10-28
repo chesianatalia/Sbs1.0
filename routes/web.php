@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,24 +16,29 @@ use App\Http\Controllers\Admin\CategoryController;
 */
 
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth']);
+Route::get('/categories/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('categories-detail');
+Route::get('/post/{id}', [App\Http\Controllers\HomeController::class, 'detailPost'])->name('post-detail');
 Route::get('/favorite', [App\Http\Controllers\FavoriteController::class, 'index'])->name('favorite');
 Route::get('/detail', [App\Http\Controllers\DetailController::class, 'index'])->name('detail');
-Route::get('/add', [App\Http\Controllers\AddController::class, 'index'])->name('add');
+Route::get('/add', [App\Http\Controllers\User\UserpostController::class, 'create'])->name('add');
 Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
-Route::get('/foodcat', [App\Http\Controllers\FoodcatController::class, 'index'])->name('foodcat');
-Route::get('/drinkcat', [App\Http\Controllers\DrinkcatController::class, 'index'])->name('drinkcat');
-Route::get('/snackcat', [App\Http\Controllers\SnackcatController::class, 'index'])->name('snackcat');
-Route::get('/dessertcat', [App\Http\Controllers\DessertcatController::class, 'index'])->name('dessertcat');
-Route::get('/othercat', [App\Http\Controllers\OthercatController::class, 'index'])->name('othercat');
+
+// Route::get('/register', [App\Http\Controllers\RegisterController::class, 'index'])->name('register');
+// Route::post('/register', [App\Http\Controllers\RegisterController::class, 'store']);
+// Route::get('/login', [LoginController::class, 'index'])->name('Login');
 
 
 //->middleware(['auth','admin'])
-Route::prefix('admin')->namespace('Admin')->group(function(){
+Route::prefix('admin')->namespace('Admin')->middleware(['auth','admin'])->group(function(){
     Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
     Route::resource('category', 'CategoryController');
     Route::resource('user', 'UserController');
     Route::resource('post','PostController');
+});
+Route::prefix('user')->namespace('User')->group(function(){
+    // Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
+    Route::resource('userpost','UserpostController');
 });
 Auth::routes();
 

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('title')
     POST
@@ -10,7 +10,7 @@
             <div class="text-center">
                 <h1 class="mb-0 title"><u>Step by Step</u></h1>
                 <h4 class="mb-3">
-                    ADMIN<br>Create New Post
+                    Create New Post
                 </h4>
             </div>
         </div>
@@ -27,7 +27,7 @@
                         </div>
                     @endif
                     <div class="card kartu">
-                        <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('userpost.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -52,9 +52,7 @@
                                     <div class="form-group">
                                         <label>User</label>
                                         <select name="user_id" class="form-control">
-                                            @foreach ($users as $user)
-                                                <option value="{{ $user->id }}">{{ $user->username }}</option>
-                                            @endforeach
+                                            <option value="{{ Auth::user()->id }}">{{ Auth::user()->username }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -144,8 +142,8 @@
 @push('addon-script')
     <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('editor1');
         CKEDITOR.replace('editor');
+        CKEDITOR.replace('editor1');
         CKEDITOR.replace('editor2');
     </script>
 @endpush

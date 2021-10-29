@@ -82,6 +82,18 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Materials</label>
+                                        <textarea name="material" id="editor1">{!! $item->material !!}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Step By Steps</label>
+                                        <textarea name="stepbystep" id="editor2">{!! $item->stepbystep !!}</textarea>
+                                    </div>
+                                </div>
                                 {{-- <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Material</label>
@@ -145,6 +157,8 @@
     <script src="//cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
     <script>
         CKEDITOR.replace('editor');
+        CKEDITOR.replace('editor1');
+        CKEDITOR.replace('editor2');
     </script>
 @endpush
 

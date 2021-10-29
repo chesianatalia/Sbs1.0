@@ -20,7 +20,7 @@
                     <img src="Images/logo-test.png" alt="">
                 </div>
                 <h2 class="text-center"><u>Profile</u></h2>
-                <form action="" class="mt-3">
+                {{-- <form action="" class="mt-3">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <input type="FirstName" placeholder="First Name" class="form-control" />
@@ -51,7 +51,7 @@
                         <a href="dashboard.html" class="btn btn_warna btn-block mt-4">
                             Save
                         </a>
-                </form>
+                </form> --}}
                 <div class="container mt-5">
                     @forelse ($posts as $post)
                         <div class="container post">
@@ -81,7 +81,8 @@
                                 <div class="container col-8">
                                     <div class="product-text">
                                         <div>
-                                            {{ $post->description }}
+                                            {{ var_dump($post['description']) }}
+                                            {{-- {{ $post->description }} --}}
                                         </div>
                                     </div>
                                 </div>
@@ -94,9 +95,9 @@
                                             <img src="Images/comment.svg" alt="" class="ml-3 mt-2">
                                         </a>
                                     </div>
-                                    <div class="col-lg-2 col-sm-4 button-readmore">
+                                    <div class="col-lg-4 col-sm-4 button-readmore">
                                         <div class="row">
-                                            <div class="col-6">
+                                            <div class="col-4">
                                                 <div class="btn-group">
                                                     <a class="btn btn-primary"
                                                         href="{{ route('userpost.edit', $post->id) }}">
@@ -108,8 +109,18 @@
                                                         <button type="submit" class="btn btn-danger">
                                                             Delete
                                                         </button>
-
                                                     </form>
+                                                    <div class="col">
+                                                        <div class="col-lg-2 col-sm-4 button-readmore">
+                                                            <a href="{{ route('post-detail', $post->id) }}"
+                                                                class="btn btn_warna  btn-sm rounded-pill">
+                                                                Read More
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
+
+
                                                 </div>
                                             </div>
                                         </div>
